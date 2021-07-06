@@ -1,7 +1,10 @@
 package main
 
-import "os"
+import (
+	"log"
+	"net/http"
+)
 
 func main() {
-	Greet(os.Stdout, "Elodie")
+	log.Fatal(http.ListenAndServe(":5000", http.HandlerFunc(MyGreeterHandler)))
 }
