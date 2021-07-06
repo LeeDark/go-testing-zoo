@@ -1,5 +1,7 @@
 package main
 
+import "time"
+
 // SpySleeper is a kind of mock which can record how a dependency is used.
 type SpySleeper struct {
 	Calls int
@@ -24,3 +26,11 @@ func (s *CountdownOperationsSpy) Write(p []byte) (n int, err error) {
 
 const write = "write"
 const sleep = "sleep"
+
+type SpyTime struct {
+	durationSlept time.Duration
+}
+
+func (s *SpyTime) Sleep(duration time.Duration) {
+	s.durationSlept = duration
+}
